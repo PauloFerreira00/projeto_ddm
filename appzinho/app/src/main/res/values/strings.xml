@@ -9,4 +9,7 @@
     <string name="search">Buscar</string>
     <string name="exit">Sair</string>
     <string name="in_buiding">Em construção</string>
+    <string name="my_events">Meus rolês</string>
+    <string name="register_event">Cadastrar rolê</string>
+    <string name="update_event">Atualizar rolê</string>
 </resources>
