@@ -7,15 +7,26 @@
     android:background="@color/colorPrimaryDark"
     tools:context=".features.main.MainActivity">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_logo"
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/pb_loading"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleLarge"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@+id/rv_events"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_events"
+        app:layout_constraintStart_toStartOf="@+id/rv_events"
+        app:layout_constraintEnd_toEndOf="@+id/rv_events"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_events"
+        android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:src="@drawable/logo"
-        android:layout_marginTop="20dp"
+        android:layout_margin="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/gl_reference"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_reference"
@@ -36,13 +47,13 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="30dp">
+            android:padding="20dp">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/bt_search_event"
+                android:id="@+id/bt_my_events"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Buscar rolê"
+                android:text="Meus rolês"
                 android:background="@color/colorPrimary"
                 android:textColor="@android:color/white"
                 app:layout_constraintBottom_toTopOf="@id/bt_register_event"
@@ -60,7 +71,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/bt_update_event"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/bt_search_event" />
+                app:layout_constraintTop_toBottomOf="@id/bt_my_events" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bt_update_event"
