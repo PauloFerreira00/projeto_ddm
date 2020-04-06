@@ -10,7 +10,6 @@
 
     <style name="ButtonTheme" parent="Widget.AppCompat.Button">
         <item name="background">@color/colorPrimary</item>
-<!--        <item name="textColor">@android:color/white</item>-->
     </style>
 
 </resources>
