@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Farras</string>
+    <string name="make_your_login">Faça seu login</string>
+    <string name="user">Usuário</string>
+    <string name="password">Senha</string>
+    <string name="signin">Entrar</string>
+    <string name="add">Adicionar</string>
+    <string name="update">Atualizar</string>
+    <string name="search">Buscar</string>
+    <string name="exit">Sair</string>
+</resources>
