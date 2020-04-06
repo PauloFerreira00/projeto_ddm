@@ -29,6 +29,9 @@ class LoginActivity : AppCompatActivity() {
             if (et_username.text.toString() == "aluno" &&
                 et_password.text.toString() == "impacta") {
 
+                et_username.text!!.clear()
+                et_password.text!!.clear()
+
                 startActivity<MainActivity>()
             } else {
                 toast("Usuário ou senha incorretos")
