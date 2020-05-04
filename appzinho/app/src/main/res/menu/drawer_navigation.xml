@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+
+        <item
+            android:id="@+id/item_action_my_events"
+            android:title="Meus rolês" />
+
+        <item
+            android:id="@+id/item_action_register_event"
+            android:title="Cadastrar rolê" />
+
+        <item
+            android:id="@+id/item_action_update_event"
+            android:title="Atualizar rolê" />
+
+        <item
+            android:id="@+id/item_action_logout"
+            android:title="@string/exit" />
+    </group>
+</menu>

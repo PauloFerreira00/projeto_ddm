@@ -12,4 +12,7 @@
     <string name="my_events">Meus rolês</string>
     <string name="register_event">Cadastrar rolê</string>
     <string name="update_event">Atualizar rolê</string>
+
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
 </resources>
