@@ -14,7 +14,8 @@
         <activity android:name=".features.login.LoginActivity">
 
         </activity>
-        <activity android:name=".features.main.MainActivity">
+        <activity android:name=".features.main.MainActivity"
+            android:theme="@style/AppTheme.Toolbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
