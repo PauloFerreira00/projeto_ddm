@@ -69,7 +69,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 
         when (item?.itemId) {
-            R.id.action_logout -> finish()
             R.id.action_refresh -> showProgressBar()
         }
 
@@ -79,7 +78,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_action_my_events -> showGenericActivity("Meus rolês")
-                R.id.item_action_register_event -> showGenericActivity("Cadastrar rolê")
+            R.id.item_action_register_event -> showGenericActivity("Cadastrar rolê")
             R.id.item_action_update_event -> showGenericActivity("Atualizar rolê")
             R.id.item_action_logout -> finish()
         }
