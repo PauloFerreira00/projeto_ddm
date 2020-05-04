@@ -2,18 +2,18 @@ package br.com.farras.appzinho.features.main
 
 import android.app.SearchManager
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.farras.appzinho.R
 import br.com.farras.appzinho.features.generic.GenericActivity
+import br.com.farras.appzinho.models.Event
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -22,9 +22,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.support.v4.drawerLayout
 import org.jetbrains.anko.toast
-import org.jetbrains.anko.toolbar
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -148,23 +146,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     class RecyclerViewMock {
-        val events: List<String> = listOf(
-            "Festa do professor",
-            "Lançamento do farras",
-            "Formatura da impacta",
-            "Rolezinho aleatório",
-            "Festa do professor",
-            "Lançamento do farras",
-            "Formatura da impacta",
-            "Rolezinho aleatório",
-            "Festa do professor",
-            "Lançamento do farras",
-            "Formatura da impacta",
-            "Rolezinho aleatório",
-            "Festa do professor",
-            "Lançamento do farras",
-            "Formatura da impacta",
-            "Rolezinho aleatório"
+        val events: List<Event> = listOf(
+            Event("Festa do professor"),
+            Event("Lançamento do farras"),
+            Event("Formatura da impacta"),
+            Event("Rolezinho aleatório"),
+            Event("Festa do professor"),
+            Event("Lançamento do farras"),
+            Event("Formatura da impacta"),
+            Event("Rolezinho aleatório"),
+            Event("Festa do professor"),
+            Event("Lançamento do farras"),
+            Event("Formatura da impacta"),
+            Event("Rolezinho aleatório"),
+            Event("Festa do professor"),
+            Event("Lançamento do farras"),
+            Event("Formatura da impacta"),
+            Event("Rolezinho aleatório")
         )
     }
 }

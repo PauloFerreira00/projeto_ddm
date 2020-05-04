@@ -6,22 +6,29 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.farras.appzinho.R
+import br.com.farras.appzinho.databinding.ItemEventBinding
+import br.com.farras.appzinho.models.Event
 
-class MainAdapter(private val events: List<String>) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+class MainAdapter(private val events: List<Event>) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_event, parent, false))
+        val inflater = LayoutInflater.from(parent.context)
+        val itemEventBinding = ItemEventBinding.inflate(inflater, parent, false)
+        return ViewHolder(itemEventBinding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.ssid.text =  events[position]
+        holder.binding(event = events[position])
     }
 
     override fun getItemCount(): Int {
         return events.size
     }
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var ssid: AppCompatTextView = view.findViewById(R.id.tv_event_name) as AppCompatTextView
+    inner class ViewHolder(private val itemEventBinding: ItemEventBinding) : RecyclerView.ViewHolder(itemEventBinding.root) {
+
+        fun binding(event: Event) {
+            itemEventBinding.event = event
+        }
     }
 }
