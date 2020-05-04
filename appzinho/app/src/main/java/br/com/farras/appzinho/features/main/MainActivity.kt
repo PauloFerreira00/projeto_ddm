@@ -32,12 +32,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         setupEvents()
         setupView()
-        setupNavigationDrawer()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -87,21 +83,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    private fun setupNavigationDrawer() {
-        var toogle = ActionBarDrawerToggle(
-            this,
-            drawer_layout,
-            toolbar,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
-        )
-
-        drawer_layout.addDrawerListener(toogle)
-        toogle.syncState()
-
-        drawer_menu.setNavigationItemSelectedListener(this)
-    }
-
     private fun showProgressBar() {
         rv_events.visibility = View.INVISIBLE
 
@@ -117,11 +98,35 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun setupView() {
+        setupToolbar()
+        setupNavigationDrawer()
+
         val events = RecyclerViewMock().events
         val adapter = MainAdapter(events)
 
         rv_events.layoutManager = GridLayoutManager(this, 2)
         rv_events.adapter = adapter
+    }
+
+    private fun setupNavigationDrawer() {
+        var toogle = ActionBarDrawerToggle(
+            this,
+            drawer_layout,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+
+        drawer_layout.addDrawerListener(toogle)
+        toogle.syncState()
+
+        drawer_menu.setNavigationItemSelectedListener(this)
+    }
+
+    private fun setupToolbar() {
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
     }
 
     private fun setupEvents() {
