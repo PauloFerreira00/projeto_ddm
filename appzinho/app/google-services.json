@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "984187881544",
+    "firebase_url": "https://app-ddm-1b973.firebaseio.com",
+    "project_id": "app-ddm-1b973",
+    "storage_bucket": "app-ddm-1b973.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984187881544:android:5e84198202a8d7543af07d",
+        "android_client_info": {
+          "package_name": "br.com.farras.appzinho"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "984187881544-q8g6e2ir9v0q5vej7akq60orqsh5kte3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANrTmNdbnA9a35irc0slVw2Vfbgxlta88"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "984187881544-q8g6e2ir9v0q5vej7akq60orqsh5kte3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
