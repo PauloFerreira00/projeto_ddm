@@ -1,7 +1,9 @@
 package br.com.farras.appzinho.features.main
 
+import android.app.Activity
 import android.app.SearchManager
 import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -112,17 +114,32 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun setupRecyclerView() {
-        viewModel.getEvents().observe(this, Observer { result ->
-            if(result.success != null) {
-                val events = result.success
-                val adapter = MainAdapter(events)
+        if (isNetworkAvailable()) {
+            viewModel.getEvents().observe(this, Observer { result ->
+                if(result.success != null) {
+                    val events = result.success
+                    setupAdapter(events)
+                } else {
+                    result.failure?.message?.let { toast(it) }
+                }
+            })
+        } else {
+            viewModel.getEventsFromLocal().observe(this, Observer { result ->
+                if (result.success != null) {
+                    val events = result.success
+                    setupAdapter(events)
+                } else {
+                    result.failure?.message?.let { toast(it) }
+                }
+            })
+        }
+    }
 
-                rv_events.layoutManager = GridLayoutManager(this, 2)
-                rv_events.adapter = adapter
-            } else {
-                result.failure?.message?.let { toast(it) }
-            }
-        })
+    private fun setupAdapter(events: List<Event>) {
+        val adapter = MainAdapter(events)
+
+        rv_events.layoutManager = GridLayoutManager(this, 2)
+        rv_events.adapter = adapter
     }
 
     private fun setupNavigationDrawer() {
@@ -163,4 +180,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun showGenericActivity(title: String) {
         startActivity<GenericActivity>("title" to title)
     }
+}
+
+fun Activity.isNetworkAvailable(): Boolean {
+    val connectivityManager =
+        getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
+    val activeNetworkInfo = connectivityManager!!.activeNetworkInfo
+    return activeNetworkInfo != null && activeNetworkInfo.isConnected
 }
