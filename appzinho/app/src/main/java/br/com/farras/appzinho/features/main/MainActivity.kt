@@ -10,9 +10,12 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.farras.appzinho.R
 import br.com.farras.appzinho.features.generic.GenericActivity
+import br.com.farras.appzinho.features.login.LoginViewModel
+import br.com.farras.appzinho.features.register.RegisterActivity
 import br.com.farras.appzinho.models.Event
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,8 +26,11 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    private val viewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +38,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         setupEvents()
         setupView()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setupRecyclerView()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -72,7 +83,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_action_my_events -> showGenericActivity("Meus rolês")
-            R.id.item_action_register_event -> showGenericActivity("Cadastrar rolê")
+            R.id.item_action_register_event -> startActivity<RegisterActivity>()
             R.id.item_action_update_event -> showGenericActivity("Atualizar rolê")
             R.id.item_action_logout -> finish()
         }
@@ -98,12 +109,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun setupView() {
         setupToolbar()
         setupNavigationDrawer()
+    }
 
-        val events = RecyclerViewMock().events
-        val adapter = MainAdapter(events)
+    private fun setupRecyclerView() {
+        viewModel.getEvents().observe(this, Observer { result ->
+            if(result.success != null) {
+                val events = result.success
+                val adapter = MainAdapter(events)
 
-        rv_events.layoutManager = GridLayoutManager(this, 2)
-        rv_events.adapter = adapter
+                rv_events.layoutManager = GridLayoutManager(this, 2)
+                rv_events.adapter = adapter
+            } else {
+                result.failure?.message?.let { toast(it) }
+            }
+        })
     }
 
     private fun setupNavigationDrawer() {
@@ -133,7 +152,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
 
         bt_register_event.setOnClickListener {
-            showGenericActivity(bt_register_event.text.toString())
+            startActivity<RegisterActivity>()
         }
 
         bt_update_event.setOnClickListener {
@@ -143,26 +162,5 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun showGenericActivity(title: String) {
         startActivity<GenericActivity>("title" to title)
-    }
-
-    class RecyclerViewMock {
-        val events: List<Event> = listOf(
-            Event("Festa do professor"),
-            Event("Lançamento do farras"),
-            Event("Formatura da impacta"),
-            Event("Rolezinho aleatório"),
-            Event("Festa do professor"),
-            Event("Lançamento do farras"),
-            Event("Formatura da impacta"),
-            Event("Rolezinho aleatório"),
-            Event("Festa do professor"),
-            Event("Lançamento do farras"),
-            Event("Formatura da impacta"),
-            Event("Rolezinho aleatório"),
-            Event("Festa do professor"),
-            Event("Lançamento do farras"),
-            Event("Formatura da impacta"),
-            Event("Rolezinho aleatório")
-        )
     }
 }
