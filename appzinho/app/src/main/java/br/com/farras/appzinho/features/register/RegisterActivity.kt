@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import br.com.farras.appzinho.R
-import br.com.farras.appzinho.features.login.LoginViewModel
 import br.com.farras.appzinho.features.main.isNetworkAvailable
 import br.com.farras.appzinho.models.Event
 import kotlinx.android.synthetic.main.activity_register.*
@@ -40,6 +39,15 @@ class RegisterActivity : AppCompatActivity() {
     private fun register(event: Event) {
         if (isNetworkAvailable()) {
             viewModel.register(event).observe(this, Observer { result ->
+                if (result.success != null) {
+                    toast(result.success)
+                    finish()
+                } else {
+                    result.failure?.message?.let { toast(it) }
+                }
+            })
+        } else {
+            viewModel.registerOnLocal(event).observe(this, Observer { result ->
                 if (result.success != null) {
                     toast(result.success)
                     finish()
