@@ -12,7 +12,13 @@
     <string name="my_events">Meus rolês</string>
     <string name="register_event">Cadastrar rolê</string>
     <string name="update_event">Atualizar rolê</string>
+    <string name="new_in_tour">Novo no rolê?</string>
+    <string name="create_account"> &#160; Crie uma conta</string>
 
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
+    <string name="register">Cadastrar</string>
+    <string name="event_date">Data</string>
+    <string name="event_name">Nome do rolê</string>
+    <string name="remember_password">Lembrar login</string>
 </resources>
