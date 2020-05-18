@@ -15,6 +15,9 @@ interface EventDao {
     @JvmSuppressWildcards
     fun createAll(objects: List<Event>)
 
+    @Insert
+    fun insert(event: Event)
+
     @Query("DELETE FROM event")
     fun deleteAll()
 
