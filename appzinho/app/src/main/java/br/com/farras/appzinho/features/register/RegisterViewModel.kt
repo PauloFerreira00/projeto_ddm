@@ -19,7 +19,8 @@ class RegisterViewModel(private val firestore: FirebaseFirestore): ViewModel() {
 
         firestore.collection("events")
             .add(event as Map<String, Any>)
-            .addOnSuccessListener { liveData.value =
+            .addOnSuccessListener {
+                liveData.value =
                 Result(success = "Cadastro realizado com sucesso!")
             }
             .addOnFailureListener { liveData.value = Result(failure = Error(message = "Problema ao realizar cadastro, tente novamente!")) }

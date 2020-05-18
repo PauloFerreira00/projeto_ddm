@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import br.com.farras.appzinho.R
 import br.com.farras.appzinho.features.login.LoginViewModel
+import br.com.farras.appzinho.features.main.isNetworkAvailable
 import br.com.farras.appzinho.models.Event
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
@@ -27,7 +28,7 @@ class RegisterActivity : AppCompatActivity() {
            if (et_event_name.text.toString().isNotEmpty() &&
                et_evente_date.text.toString().isNotEmpty()
            ) {
-               val event = Event(et_event_name.text.toString(), et_evente_date.text.toString())
+               val event = Event(name = et_event_name.text.toString(), date = et_evente_date.text.toString())
                register(event)
            } else {
                toast("Preencha todos os campos!")
@@ -37,13 +38,15 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun register(event: Event) {
-        viewModel.register(event).observe(this, Observer { result ->
-            if (result.success != null) {
-                toast(result.success)
-                finish()
-            } else {
-                result.failure?.message?.let { toast(it) }
-            }
-        })
+        if (isNetworkAvailable()) {
+            viewModel.register(event).observe(this, Observer { result ->
+                if (result.success != null) {
+                    toast(result.success)
+                    finish()
+                } else {
+                    result.failure?.message?.let { toast(it) }
+                }
+            })
+        }
     }
 }
