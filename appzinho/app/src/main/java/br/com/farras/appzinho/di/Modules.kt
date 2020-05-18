@@ -16,7 +16,7 @@ object Modules {
     private val viewModels = module {
         viewModel { LoginViewModel(get(name = "FirebaseAuth")) }
 
-        viewModel { RegisterViewModel(get(name = "FirebaseFirestore")) }
+        viewModel { RegisterViewModel(get(name = "FirebaseFirestore"), get(name = "appDatabase")) }
 
         viewModel { MainViewModel(get(name = "FirebaseFirestore"), get(name = "appDatabase")) }
     }
