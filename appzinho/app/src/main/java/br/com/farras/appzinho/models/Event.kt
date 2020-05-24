@@ -10,5 +10,7 @@ import java.io.Serializable
 data class Event(
     @PrimaryKey(autoGenerate = true) val uid: Int = 0,
     @ColumnInfo @PropertyName("name") val name: String = "",
-    @ColumnInfo @PropertyName("date") val date: String = "-"
+    @ColumnInfo @PropertyName("date") val date: String = "-",
+    @ColumnInfo @PropertyName("latitude") val latitude: Double = 0.0,
+    @ColumnInfo @PropertyName("longitude") val longitude: Double = 0.0
 ): Serializable

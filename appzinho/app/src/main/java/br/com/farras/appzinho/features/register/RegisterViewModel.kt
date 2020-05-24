@@ -19,7 +19,9 @@ class RegisterViewModel(private val firestore: FirebaseFirestore, private val da
         val liveData = MutableLiveData<Result<String>>()
         val eventHashMap = hashMapOf(
             "name" to event.name,
-            "date" to event.date
+            "date" to event.date,
+            "latitude" to event.latitude,
+            "longitude" to event.longitude
         )
 
         firestore.collection("events")

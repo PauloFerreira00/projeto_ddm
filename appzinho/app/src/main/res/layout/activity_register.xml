@@ -17,12 +17,32 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/et_evente_date"
+    android:id="@+id/et_evente_date"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/event_date"
+    android:layout_marginTop="20dp"
+    app:layout_constraintTop_toBottomOf="@id/et_event_name"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_latitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/event_date"
+        android:hint="@string/latitude"
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/et_event_name"
+        app:layout_constraintTop_toBottomOf="@id/et_evente_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_longitude"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/longitude"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/et_latitude"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -36,6 +56,6 @@
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_evente_date" />
+        app:layout_constraintTop_toBottomOf="@+id/et_longitude" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

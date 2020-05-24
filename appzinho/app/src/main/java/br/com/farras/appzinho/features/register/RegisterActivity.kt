@@ -25,9 +25,18 @@ class RegisterActivity : AppCompatActivity() {
     private fun setupActions() {
        bt_register_event_data.setOnClickListener {
            if (et_event_name.text.toString().isNotEmpty() &&
-               et_evente_date.text.toString().isNotEmpty()
+               et_evente_date.text.toString().isNotEmpty() &&
+               et_latitude.text.toString().isNotEmpty() &&
+               et_longitude.text.toString().isNotEmpty()
            ) {
-               val event = Event(name = et_event_name.text.toString(), date = et_evente_date.text.toString())
+               val latitude = et_latitude.text.toString().toDouble()
+               val longitude = et_longitude.text.toString().toDouble()
+               val event = Event(
+                   name = et_event_name.text.toString(),
+                   date = et_evente_date.text.toString(),
+                   latitude = latitude,
+                   longitude = longitude
+               )
                register(event)
            } else {
                toast("Preencha todos os campos!")
