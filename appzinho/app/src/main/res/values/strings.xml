@@ -21,4 +21,7 @@
     <string name="event_date">Data</string>
     <string name="event_name">Nome do rolê</string>
     <string name="remember_password">Lembrar login</string>
+    <string name="see_map">Ver mapa</string>
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
 </resources>
