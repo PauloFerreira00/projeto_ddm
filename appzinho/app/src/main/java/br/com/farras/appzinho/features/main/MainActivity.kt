@@ -15,8 +15,8 @@ import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.farras.appzinho.R
+import br.com.farras.appzinho.features.map.MapActivity
 import br.com.farras.appzinho.features.generic.GenericActivity
-import br.com.farras.appzinho.features.login.LoginViewModel
 import br.com.farras.appzinho.features.register.RegisterActivity
 import br.com.farras.appzinho.models.Event
 import com.google.android.material.navigation.NavigationView
@@ -174,6 +174,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         bt_update_event.setOnClickListener {
             showGenericActivity(bt_update_event.text.toString())
+        }
+
+        bt_map.setOnClickListener {
+            startActivity<MapActivity>()
         }
     }
 

@@ -57,6 +57,18 @@
                 android:padding="20dp">
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bt_map"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/see_map"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/bt_my_events"/>
+
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/bt_my_events"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -66,7 +78,7 @@
                     app:layout_constraintBottom_toTopOf="@id/bt_register_event"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/bt_map"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/bt_register_event"
