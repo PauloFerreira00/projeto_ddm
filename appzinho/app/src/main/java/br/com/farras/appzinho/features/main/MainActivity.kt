@@ -18,6 +18,7 @@ import br.com.farras.appzinho.R
 import br.com.farras.appzinho.features.map.MapActivity
 import br.com.farras.appzinho.features.generic.GenericActivity
 import br.com.farras.appzinho.features.register.RegisterActivity
+import br.com.farras.appzinho.helpers.NotificationHelper
 import br.com.farras.appzinho.models.Event
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,11 +29,14 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val viewModel: MainViewModel by viewModel()
+
+    private val notificationHelper: NotificationHelper by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,6 +115,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun setupView() {
         setupToolbar()
         setupNavigationDrawer()
+
+        notificationHelper.show("Aqui é o lugar do seu rolê",
+            "No Farras você encontra um rolê a qualquer hora!")
     }
 
     private fun setupRecyclerView() {
