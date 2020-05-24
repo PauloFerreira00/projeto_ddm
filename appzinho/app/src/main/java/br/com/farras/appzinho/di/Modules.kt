@@ -1,11 +1,13 @@
 package br.com.farras.appzinho.di
 
 import androidx.room.Room
+import br.com.farras.appzinho.FarrasApplication
 import br.com.farras.appzinho.database.AppDatabase
 import br.com.farras.appzinho.features.login.LoginViewModel
 import br.com.farras.appzinho.features.main.MainViewModel
 import br.com.farras.appzinho.features.map.MapViewModel
 import br.com.farras.appzinho.features.register.RegisterViewModel
+import br.com.farras.appzinho.helpers.NotificationHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import org.koin.android.ext.koin.androidContext
@@ -25,6 +27,8 @@ object Modules {
     }
 
     private val general = module {
+
+        factory("NotificationHelper") { NotificationHelper(FarrasApplication.appContext) }
 
         single("appDatabase") {
             Room.databaseBuilder(androidContext(), AppDatabase::class.java, "database.db")
