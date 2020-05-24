@@ -4,6 +4,7 @@ import androidx.room.Room
 import br.com.farras.appzinho.database.AppDatabase
 import br.com.farras.appzinho.features.login.LoginViewModel
 import br.com.farras.appzinho.features.main.MainViewModel
+import br.com.farras.appzinho.features.map.MapViewModel
 import br.com.farras.appzinho.features.register.RegisterViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -19,6 +20,8 @@ object Modules {
         viewModel { RegisterViewModel(get(name = "FirebaseFirestore"), get(name = "appDatabase")) }
 
         viewModel { MainViewModel(get(name = "FirebaseFirestore"), get(name = "appDatabase")) }
+
+        viewModel { MapViewModel(get("FirebaseFirestore")) }
     }
 
     private val general = module {
